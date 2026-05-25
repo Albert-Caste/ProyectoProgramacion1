@@ -1,32 +1,56 @@
 package co.edu.uniquindio.parquederojfx.controller;
 
 
-import co.edu.uniquindio.parquederojfx.model.Administrador;
-import co.edu.uniquindio.parquederojfx.model.Cilindraje;
-import co.edu.uniquindio.parquederojfx.model.Operador;
+import co.edu.uniquindio.parquederojfx.App;
+import co.edu.uniquindio.parquederojfx.model.*;
+
+import javax.swing.*;
+import java.util.List;
 
 
 public class AccesoController {
 
+
     private Administrador administrador;
     private Operador operador;
 
-    public AccesoController() {
+    /**
+     * Esta variable es para intanciar de un solo
+     */
+    private App atributosApp;
 
-        administrador = new Administrador("Daniel","000", "Ocampo", "321456", "123"   );
-        operador = new Operador("Albert", "1111", "Castellanos", "65321", "321");
+
+
+    public AccesoController() {
+        atributosApp = new App();
+
     }
 
-    public boolean validarAcceso(String nombre, String codigo) {
+
+
+    public boolean validarAcceso(String nombre, String documento, String codigo) {
         boolean bandera = false;
-        if (nombre.equals(administrador.getNombre()) &&
-                codigo.equals(administrador.getCodigoAdministrador())){
-            bandera = true;
+
+
+        try{
+            operador = atributosApp.getParqueaderoUQ().buscarOperador(documento);
+        } catch (NullPointerException e){
+            JOptionPane.showMessageDialog(null,"No esta registrado ");
+
         }
 
-        if (nombre.equals(operador.getNombre()) && codigo.equals(operador.getCodigoEmpleado())){
-            bandera = true;
+
+        if(operador!= null){
+            if (nombre.equals(operador.getNombre()) && codigo.equals(operador.getCodigoEmpleado())){
+                bandera = true;
+            }
+        }else {
+            bandera = false;
         }
+
+
+
+
 
         return bandera;
     }

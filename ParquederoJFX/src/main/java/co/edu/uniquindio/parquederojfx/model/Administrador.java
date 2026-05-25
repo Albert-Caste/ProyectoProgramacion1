@@ -16,6 +16,12 @@ public class Administrador extends Persona implements IFuncionAdmin {
     Parqueadero parqueaderoU = new Parqueadero("UQ", "123");
 
 
+    /**
+     * Metodo para validar la existencia de una es espacio
+      * @param idEspacio
+     * @return
+     */
+
     public boolean validarEspacio(String idEspacio) {
         boolean valida = false;
         for (Espacio ep : parqueaderoU.getListEspacios()){
@@ -123,8 +129,6 @@ public class Administrador extends Persona implements IFuncionAdmin {
 
 
         JOptionPane.showMessageDialog(null, "Tarifas Actualizadas ");
-
-
 
     }
 

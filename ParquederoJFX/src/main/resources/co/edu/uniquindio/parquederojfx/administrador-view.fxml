@@ -4,41 +4,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0"
-            prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1"
-
-            fx:controller="co.edu.uniquindio.parquederojfx.viewController.AccesoViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.parquederojfx.viewController.AccesoViewController">
 
    <children>
 
-      <Label layoutX="220.0"
-             layoutY="40.0"
-             text="ParquederoUQ">
+      <Label layoutX="220.0" layoutY="40.0" text="ParquederoUQ">
 
          <font>
-            <Font size="22.0"/>
+            <Font size="22.0" />
          </font>
 
       </Label>
 
-      <TextField fx:id="txtNombreTrabajador"
-                 layoutX="200.0"
-                 layoutY="100.0"
-                 promptText="Ingrese nombre"/>
+      <TextField fx:id="txtNombreTrabajador" layoutX="218.0" layoutY="101.0" promptText="Ingrese nombre" />
 
-      <TextField fx:id="txtIDTrabajador"
-                 layoutX="200.0"
-                 layoutY="160.0"
-                 promptText="Ingrese ID"/>
+      <TextField fx:id="txtIDTrabajador" layoutX="218.0" layoutY="200.0" promptText="Ingrese ID trabajador" />
 
-      <Button fx:id="btValidarAcceso"
-              layoutX="240.0"
-              layoutY="230.0"
-              text="Validar"
-
-              onAction="#onValidarAcceso"/>
+      <Button fx:id="btValidarAcceso" layoutX="266.0" layoutY="248.0" onAction="#onValidarAcceso" text="Validar" />
+      <TextField fx:id="txtCedula" layoutX="218.0" layoutY="148.0" promptText="Documento de identidad" />
 
    </children>
 
