@@ -134,7 +134,6 @@ public class Administrador extends Persona implements IFuncionAdmin {
 
 
 
-
     public String getCodigoAdministrador() {
         return codigoAdministrador;
     }
