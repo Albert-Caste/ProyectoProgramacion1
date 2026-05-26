@@ -129,6 +129,20 @@ public class Administrador extends Persona implements IFuncionAdmin {
     }
 
 
+    public boolean validarEspacio(Parqueadero parqueadero, String idEspacio) {
+        boolean valida = false;
+        for (Espacio ep : parqueadero.getListEspacios()) {
+            if (ep.getCodigoEspacio().equals(idEspacio)) {
+                valida = true;
+                break;
+            }
+        }
+        return valida;
+    }
+
+
+
+
 
 
 

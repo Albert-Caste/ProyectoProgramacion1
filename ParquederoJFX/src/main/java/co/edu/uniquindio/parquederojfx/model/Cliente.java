@@ -8,7 +8,7 @@ public class Cliente extends Persona {
     private Usuario tipoUsuario;
     private List<Vehiculo> listVehiculosCliente;
 
-    public Cliente (String nombre, String documento, String apellido, String telefono, Usuario tipoUsuario, List<Vehiculo> listVehiculosCliente) {
+    public Cliente (String nombre, String documento, String apellido, String telefono, Usuario tipoUsuario) {
         super(nombre, documento, apellido, telefono);
         this.tipoUsuario = tipoUsuario;
         this.listVehiculosCliente = new ArrayList<>();

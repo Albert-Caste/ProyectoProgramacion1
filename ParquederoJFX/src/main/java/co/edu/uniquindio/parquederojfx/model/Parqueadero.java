@@ -122,46 +122,73 @@ public class Parqueadero {
 
     /**
      * Metodo para agregar persona a la lista de clientes
-     * @param nombre del cliente
-     * @param documento del cliente
-     * @param apellido del cliente
-     * @param telefono del cliente
+     *
+     * @param nombre      del cliente
+     * @param documento   del cliente
+     * @param apellido    del cliente
+     * @param telefono    del cliente
      * @param tipoUsuario del cliente
+     * @return
      */
 
-    public void agregarCliente(String nombre, String documento, String apellido, String telefono, Usuario tipoUsuario) {
+    public boolean agregarCliente(String nombre, String documento, String apellido, String telefono, Usuario tipoUsuario) {
         Cliente nuevoCliente = null;
         List <Vehiculo> listVehiculosCliente = new ArrayList<>();
 
         if(validarCliente(documento)) {
             JOptionPane.showMessageDialog(null, "El cliente existe en el sistema.");
+
         } else {
-            nuevoCliente = new Cliente(nombre, documento, apellido, telefono, tipoUsuario, listVehiculosCliente);
+            nuevoCliente = new Cliente(nombre, documento, apellido, telefono, tipoUsuario);
             listPersonas.add(nuevoCliente);
 
             JOptionPane.showMessageDialog(null, "Se registró " + nombre);
+            return true;
         }
+
+        return false;
+    }
+
+    public boolean agregarClienteSinAtributos(Cliente cliente) {
+
+        listPersonas.add(cliente);
+        return true;
 
     }
 
     /**
      * Metodo para eliminar Cliente
+     *
      * @param documento
+     * @return
      */
 
 
-    public void eliminarCliente(String documento) {
+    public boolean eliminarCliente(String documento) {
 
-        if(validarCliente(documento)) {
-            JOptionPane.showMessageDialog(null, "El cliente  no existe en el sistema.");
+        if(!validarCliente(documento)) {
+
+            JOptionPane.showMessageDialog(
+                    null,
+                    "El cliente no existe en el sistema."
+            );
+
         } else {
-            Cliente clienteABorrar = buscarCliente(documento);
 
+            Cliente clienteABorrar =
+                    buscarCliente(documento);
 
-            JOptionPane.showMessageDialog(null, "Se registró " + clienteABorrar.getNombre());
             listPersonas.remove(clienteABorrar);
+
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Se eliminó " + clienteABorrar.getNombre()
+            );
+
+            return true;
         }
 
+        return false;
     }
 
     /**
@@ -559,4 +586,6 @@ public class Parqueadero {
     public void setTheTarifa(Tarifa theTarifa) {
         this.theTarifa = theTarifa;
     }
+
+
 }

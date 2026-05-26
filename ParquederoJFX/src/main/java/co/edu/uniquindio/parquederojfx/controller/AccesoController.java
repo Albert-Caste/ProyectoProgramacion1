@@ -21,12 +21,12 @@ public class AccesoController {
     /**
      * Esta variable es para intanciar de un solo
      */
-    private App atributosApp;
+    Parqueadero atributosApp = App.getParqueadero();
 
 
 
     public AccesoController() {
-        atributosApp = new App();
+
 
     }
 
@@ -37,7 +37,7 @@ public class AccesoController {
 
 
         try{
-            operador = atributosApp.getParqueaderoUQ().buscarOperador(documento);
+            operador = atributosApp.buscarOperador(documento);
         } catch (NullPointerException e){
             JOptionPane.showMessageDialog(null,"No esta registrado ");
 
