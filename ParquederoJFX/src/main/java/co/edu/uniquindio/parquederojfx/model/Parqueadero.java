@@ -52,6 +52,27 @@ public class Parqueadero {
         return  bandera;
     }
 
+    /**
+     * Metodo para buscar una persona en la lista de persona dado el documento
+     * @param id
+     * @return
+     */
+
+    public Persona buscarPersona(String id) {
+        Persona personaBuscada = null;
+        for (Persona ps : listPersonas) {
+            if (ps.getDocumento().equals(id)) {
+                personaBuscada =  ps;
+                break;
+            }
+        }
+
+        if (personaBuscada == null) {
+            JOptionPane.showMessageDialog(null, " no existe en el sistema.");
+        }
+        return personaBuscada;
+    }
+
 
     /**
      * CRUD CLIENTE
@@ -94,7 +115,7 @@ public class Parqueadero {
         }
 
         if (clienteBuscado == null) {
-            JOptionPane.showMessageDialog(null, "la moto no existe en el sistema.");
+            JOptionPane.showMessageDialog(null, " no existe en el sistema.");
         }
         return clienteBuscado;
     }
@@ -144,6 +165,43 @@ public class Parqueadero {
     }
 
     /**
+     * Metodo para validar la existencia de un operador en la lista de Personas
+     * @param idOperador
+     * @return
+     */
+    public boolean validarOperador(String idOperador) {
+        boolean bandera = false;
+
+        for (Persona ps : listPersonas) {
+            if (ps.getDocumento().equals(idOperador) && ps instanceof Operador ) {
+                bandera = true;
+                break;
+
+            }
+        }
+        return bandera;
+    }
+
+
+    /**
+     * Metodo para validar la existencia de una Administrador en la lista de personas
+     * @param idAdministrador
+     * @return
+     */
+    public boolean validarAdministrador(String idAdministrador) {
+        boolean bandera = false;
+
+        for (Persona ps : listPersonas) {
+            if (ps.getDocumento().equals(idAdministrador) && ps instanceof Administrador ) {
+                bandera = true;
+                break;
+
+            }
+        }
+        return bandera;
+    }
+
+    /**
      * Metodo para agragar un nuevo operador al parqueadero
      * @param nombre
      * @param documento
@@ -169,9 +227,74 @@ public class Parqueadero {
 
 
     /**
-     * CRUD VEHICULO
+     * Metodo para agregar un nuevo administrador a parquedero
+     * @param nombre
+     * @param documento
+     * @param apellido
+     * @param telefono
+     * @param codigoEmpleado
+     */
+
+    public void agregarAdministrador(String nombre, String documento, String apellido, String telefono, String codigoEmpleado) {
+        Administrador nuevoAdministrador= null;
+
+        if(validarAdministrador(documento)) {
+            JOptionPane.showMessageDialog(null, "El Operador existe en el sistema.");
+        } else {
+            nuevoAdministrador = new Administrador (nombre, documento, apellido, telefono, codigoEmpleado);
+            listPersonas.add(nuevoAdministrador);
+
+            JOptionPane.showMessageDialog(null, "Se registró " + nombre);
+        }
+
+    }
 
     /**
+     * Metodo para buscar Operador en la lista de personas dado su documento
+     * @param idTrabajador
+     * @return
+     */
+    public Operador buscarOperador(String idTrabajador) {
+        Operador operadorBuscado = null;
+        for (Persona ps : listPersonas) {
+            if (ps.getDocumento().equals(idTrabajador) && ps instanceof Operador ) {
+                operadorBuscado = (Operador) ps;
+                break;
+            }
+        }
+
+        if (operadorBuscado == null) {
+            JOptionPane.showMessageDialog(null, " no existe en el sistema.");
+        }
+        return operadorBuscado;
+    }
+
+    /**
+     * Metodo para buscar administrador en la lista de personas, dado su documento
+     * @param idAdmin documento del administrador
+     * @return
+     */
+
+    public Administrador buscarAdministrador(String idAdmin) {
+        Administrador adminBuscado = null;
+        for (Persona ps : listPersonas) {
+            if (ps.getDocumento().equals(idAdmin) && ps instanceof Administrador ) {
+                adminBuscado = (Administrador) ps;
+                break;
+            }
+        }
+
+        if (adminBuscado == null) {
+            JOptionPane.showMessageDialog(null, " no existe en el sistema.");
+        }
+        return adminBuscado;
+    }
+
+
+    /**
+     * CRUD VEHICULO
+
+     /**
      * Metodo para validar existencia de moto usando su placa
      * @param placa
      * @return booleano
@@ -179,11 +302,11 @@ public class Parqueadero {
 
     public boolean validarMoto(String placa) {
         boolean bandera = false;
-            for(Vehiculo v : listVehiculos) {
-                if(v.getPlaca().equals(placa) && v instanceof Moto) {
-                    bandera = true;
-                }
+        for(Vehiculo v : listVehiculos) {
+            if(v.getPlaca().equals(placa) && v instanceof Moto) {
+                bandera = true;
             }
+        }
         return bandera;
     }
 
@@ -225,6 +348,7 @@ public class Parqueadero {
      * @param placa
      * @return
      */
+
     public Moto buscarMoto(String placa) {
         Moto motoBuscada = null;
         for (Vehiculo mt : listVehiculos) {
@@ -289,7 +413,70 @@ public class Parqueadero {
         return biciBuscada;
     }
 
+    /**
+     * Metodo para agregar moto al la lista de vehiculos
+     * @param placa
+     * @param color
+     * @param tipoCarro
+     */
 
+
+    public void agregarCarro(String placa, String color,TipoCarro tipoCarro) {
+        Carro  nuevoCarro = null;
+
+
+        if(validarCarro(placa)) {
+            JOptionPane.showMessageDialog(null, "El Carro ya existe en el sistema.");
+        } else {
+            nuevoCarro = new Carro(nombre, color, tipoCarro);
+            listVehiculos.add(nuevoCarro);
+
+            JOptionPane.showMessageDialog(null, "Se registró " + placa);
+        }
+
+    }
+
+    /**
+     * Metodo para agregar moto al la lista de vehiculos
+     * @param placa
+     * @param color
+     * @param cilindraje
+     */
+
+
+    public void agregarMoto(String placa, String color,Cilindraje cilindraje) {
+        Moto  nuevaMoto = null;
+
+
+        if(validarCarro(placa)) {
+            JOptionPane.showMessageDialog(null, "La Moto  ya existe en el sistema.");
+        } else {
+            nuevaMoto = new Moto(nombre, color, cilindraje);
+            listVehiculos.add(nuevaMoto);
+
+            JOptionPane.showMessageDialog(null, "Se registró " + placa);
+        }
+
+    }
+
+    /**
+     * Programa para agregar una bicicleta a la lista de vehiculos
+     * @param placa
+     * @param color
+     */
+
+
+    public void agregarBicicleta(String placa, String color){
+        Bicicleta nuevaBicicleta = null;
+
+        if (validarBicicleta(placa)){
+            JOptionPane.showMessageDialog(null, "La Bicicleta ya exixte en el sistema. ");
+        } else {
+            nuevaBicicleta = new Bicicleta(placa, color);
+            listVehiculos.add(nuevaBicicleta);
+            JOptionPane.showMessageDialog(null, "Se registró bicicleta " + color + " De serial " + placa);
+        }
+    }
 
 
 

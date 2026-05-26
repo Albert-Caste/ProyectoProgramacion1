@@ -21,6 +21,9 @@ public class AccesoViewController {
     }
 
     @FXML
+    private TextField txtCedula;
+
+    @FXML
     private TextField txtNombreTrabajador;
 
     @FXML
@@ -35,12 +38,15 @@ public class AccesoViewController {
         String nombre =
                 txtNombreTrabajador.getText();
 
+        String documento =
+                txtCedula.getText();
+
+
         String codigo =
                 txtIDTrabajador.getText();
 
         boolean acceso =
-                administradorController
-                        .validarAcceso(nombre, codigo);
+                administradorController.validarAcceso(nombre, documento, codigo);
 
         if(acceso){
 

@@ -6,5 +6,6 @@ module co.edu.uniquindio.parquederojfx {
 
     opens co.edu.uniquindio.parquederojfx to javafx.fxml;
     opens co.edu.uniquindio.parquederojfx.viewController to javafx.fxml;
+    
     exports co.edu.uniquindio.parquederojfx;
 }
