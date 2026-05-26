@@ -156,6 +156,30 @@ public class Parqueadero {
 
     }
 
+
+    public boolean actualizarCliente(String documento, Cliente clienteActualizado){
+        boolean bandera = false;
+        Cliente clienteViejo = null;
+        for (Persona ps : listPersonas) {
+            if (ps.getDocumento().equals(documento)) {
+                clienteViejo = (Cliente) ps;
+
+                clienteViejo.setNombre(clienteActualizado.getNombre());
+                clienteViejo.setApellido(clienteActualizado.getApellido());
+                clienteViejo.setApellido(clienteActualizado.getApellido());
+                clienteViejo.setTelefono(clienteActualizado.getTelefono());
+                clienteViejo.setTipoUsuario(clienteActualizado.getTipoUsuario());
+                bandera =true;
+                System.out.println("Cliente Actualizado");
+                break;
+
+
+            }
+
+        }
+        return bandera;
+    }
+
     /**
      * Metodo para eliminar Cliente
      *

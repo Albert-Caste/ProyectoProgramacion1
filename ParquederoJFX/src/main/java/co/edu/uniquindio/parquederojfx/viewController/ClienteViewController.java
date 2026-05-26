@@ -88,6 +88,9 @@ public class ClienteViewController {
     private TextField txtNombre;
 
     @FXML
+    private TextField txtTelefono;
+
+    @FXML
     private Button btnLimpiar;
 
     @FXML
@@ -113,6 +116,9 @@ public class ClienteViewController {
 
     @FXML
     private TableColumn<Cliente, String> tbcCedula;
+
+    @FXML
+    private TableColumn<Cliente, String> tbcUsuario;
 
     @FXML
     private TextField txtCedula;
@@ -141,7 +147,11 @@ public class ClienteViewController {
     @FXML
     void initialize() {
         this.app=app;
+
+
+
         clienteController = new ClienteController();
+        cargarTiposUsuario();
         initView();
     }
 
@@ -166,6 +176,7 @@ public class ClienteViewController {
         tbcCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDocumento()));
         tbcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         tbcApellido.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getApellido()));
+        tbcUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTipoUsuario().toString()));
         // Usamos SimpleObjectProperty para manejar Double y Integer correctamente
     }
 
@@ -197,6 +208,14 @@ public class ClienteViewController {
     }
 
     private void agregarCliente() {
+        if(cbTipoUsuario.getValue() == null){
+
+            System.out.println(
+                    "Seleccione un tipo de usuario"
+            );
+
+            return;
+        }
         Cliente cliente = buildCliente();
         if (clienteController.crearClienteSinAtributos(cliente)) {
             listClientes.add(cliente);
@@ -205,7 +224,12 @@ public class ClienteViewController {
     }
 
     private Cliente buildCliente() {
-        Cliente cliente = new Cliente(txtNombre.getText(), txtCedula.getText(), txtApellido.getText(),txtNombre.getText(), Usuario.ESTUDIANTE);
+
+        Usuario tipoUsuario = cbTipoUsuario.getValue();
+
+        Cliente cliente =
+                new Cliente(txtNombre.getText(),txtCedula.getText(),txtApellido.getText(),txtTelefono.getText(), tipoUsuario);
+
         return cliente;
     }
 
@@ -242,9 +266,18 @@ public class ClienteViewController {
         txtCedula.clear();
         txtNombre.clear();
         txtApellido.clear();
+        txtTelefono.clear();
+
     }
 
     public void setApp(App app) {
         this.app = app;
+    }
+
+    private void cargarTiposUsuario(){
+
+        cbTipoUsuario.getItems().addAll(
+                Usuario.values()
+        );
     }
 }

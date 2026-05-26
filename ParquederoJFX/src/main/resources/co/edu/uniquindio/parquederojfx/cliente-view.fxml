@@ -22,10 +22,7 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </Label>
-                                <ComboBox fx:id="cbTipoUsuario"
-                                          layoutX="126.0"
-                                          layoutY="160.0"
-                                          prefWidth="194.0"/>
+                                <ComboBox fx:id="cbTipoUsuario" layoutX="126.0" layoutY="160.0" prefWidth="194.0" />
                                 <Label layoutX="41.0" layoutY="58.0" prefHeight="17.0" prefWidth="64.0" text="Cedula:">
                                     <font>
                                         <Font size="18.0" />
@@ -41,14 +38,25 @@
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                                <TextField fx:id="txtCedula" layoutX="126.0" layoutY="59.0" prefHeight="25.0" prefWidth="194.0" />
-                                <TextField fx:id="txtNombre" layoutX="126.0" layoutY="93.0" prefHeight="25.0" prefWidth="194.0" />
-                                <TextField fx:id="txtApellido" layoutX="126.0" layoutY="125.0" prefHeight="25.0" prefWidth="194.0" />
-                                <Button fx:id="btbAgregarCliente" layoutX="105.0" layoutY="223.0" mnemonicParsing="false" onAction="#onAgregarCliente" text="Agregar cliente" />
-                                <Button fx:id="btnActualizarCliente" layoutX="230.0" layoutY="223.0" mnemonicParsing="false" onAction="#onActualizarCliente" text="Actualizar cliente" />
-                                <Button fx:id="btRegresar" layoutX="14.0" layoutY="15.0" onAction="#onRegresar" text="Regresar al Parqueadero" />
+                                <TextField fx:id="txtCedula" layoutX="126.0" layoutY="59.0" prefHeight="25.0" prefWidth="194.0" promptText="Cedula" />
+                                <TextField fx:id="txtNombre" layoutX="126.0" layoutY="93.0" prefHeight="25.0" prefWidth="194.0" promptText="Nombre" />
+                                <TextField fx:id="txtApellido" layoutX="126.0" layoutY="125.0" prefHeight="25.0" prefWidth="194.0" promptText="Apellido" />
+                                <Button fx:id="btbAgregarCliente" layoutX="108.0" layoutY="236.0" mnemonicParsing="false" onAction="#onAgregarCliente" text="Agregar cliente" />
+                                <Button fx:id="btRegresar" layoutX="-8.0" layoutY="7.0" onAction="#onRegresar" prefHeight="39.0" prefWidth="172.0" text="Regresar al Parqueadero" />
+                        <Label layoutX="41.0" layoutY="160.0" prefHeight="18.0" prefWidth="91.0" text="Usuario:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtTelefono" layoutX="126.0" layoutY="197.0" prefHeight="26.0" prefWidth="194.0" promptText="Telefono" />
+                        <Label layoutX="39.0" layoutY="198.0" text="Telefono:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
                             </children>
                         </Pane>
+                          <Button fx:id="btnActualizarCliente" layoutX="267.0" layoutY="258.0" mnemonicParsing="false" onAction="#onActualizarCliente" text="Actualizar cliente" />
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="271.0" prefWidth="645.0">
@@ -58,6 +66,7 @@
                                 <TableColumn fx:id="tbcCedula" prefWidth="75.0" text="Cedula" />
                                 <TableColumn fx:id="tbcNombre" prefWidth="75.0" text="Nombre" />
                                 <TableColumn fx:id="tbcApellido" prefWidth="75.0" text="Apellido" />
+                                <TableColumn fx:id="tbcUsuario" prefWidth="75.0" text="T. Usuario" />
                             </columns>
                         </TableView>
                         <Button fx:id="btnLimpiar" layoutX="93.0" layoutY="223.0" mnemonicParsing="false" onAction="#onLimpiar" prefHeight="25.0" prefWidth="106.0" text="Limpiar" />

@@ -34,4 +34,6 @@ public class Cliente extends Persona {
     public void setListVehiculosCliente(List<Vehiculo> listVehiculosCliente) {
         this.listVehiculosCliente = listVehiculosCliente;
     }
+
+
 }

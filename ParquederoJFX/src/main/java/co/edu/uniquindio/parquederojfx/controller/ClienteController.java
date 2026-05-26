@@ -47,8 +47,8 @@ public class ClienteController {
     }
 
     public boolean actualizarCliente(String cedula, Cliente nuevoCliente) {
-        System.out.println("Cliente Eliminado");
-        return atrubutosApp.eliminarCliente(cedula);
+
+        return atrubutosApp.actualizarCliente(cedula, nuevoCliente);
     }
 
     public void registrarCliente(){
